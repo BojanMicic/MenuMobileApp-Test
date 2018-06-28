@@ -7,6 +7,8 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 
 public class SignUpPage extends BasePage {
 
@@ -14,6 +16,39 @@ public class SignUpPage extends BasePage {
         super(driver);
     }
 
+    public WebElement getSignUpLink() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/buttonSignUp"));
+    }
+
+    public List<WebElement> getAllTextFields() {
+        List<WebElement> textFields =  driver.findElements(By.id("com.usemenu.MenuAndroidApplication:id/edittext"));
+        return textFields;
+    }
+
+    public WebElement getContinueButton() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/continueButton"));
+    }
+
+    public List<WebElement> getAllTextViews() {
+        List<WebElement> textViews = driver.findElementsByClassName("android.widget.TextView");;
+        return textViews;
+    }
+
+    public WebElement getCreditCardField() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/cc_card"));
+    }
+
+    public WebElement getCreditCardCvvField() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/cc_ccv"));
+    }
+
+    public WebElement getSignUpButton() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/signUpButton"));
+    }
+
+    public WebElement getManageAccountLink() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/textviewAccountSettings"));
+    }
 
     public boolean isMenageAccountOptionVisible() {
         try {
@@ -23,6 +58,10 @@ public class SignUpPage extends BasePage {
         catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    public WebElement getLogoutButton() {
+        return driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/buttonManageAccountLogOut"));
     }
 
 }

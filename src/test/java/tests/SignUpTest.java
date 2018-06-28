@@ -31,36 +31,33 @@ public class SignUpTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.usemenu.MenuAndroidApplication:id/imageButtonActionBarMenu")));
 
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/imageButtonActionBarMenu")).click();
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/buttonSignUp")).click();
-        List<WebElement> textFields = driver.findElements(By.id("com.usemenu.MenuAndroidApplication:id/edittext"));
+        sp.getHamburgerMenu().click();
+        sp.getSignUpLink().click();
 
-        textFields.get(0).sendKeys("Tester");
-        textFields.get(1).sendKeys("Testeric");
-        textFields.get(2).sendKeys("tester@gmail.com");
-        textFields.get(3).sendKeys("tTesteric2018");
+        sp.getAllTextFields().get(0).sendKeys("Tester4");
+        sp.getAllTextFields().get(1).sendKeys("Testeric4");
+        sp.getAllTextFields().get(2).sendKeys("tester4@gmail.com");
+        sp.getAllTextFields().get(3).sendKeys("tTesteric2018");
+        sp.getContinueButton().click();
 
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/continueButton")).click();
+        sp.getAllTextViews().get(3).click();
 
-        List<WebElement> payment = driver.findElementsByClassName("android.widget.TextView");
-        payment.get(3).click();
-
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/cc_card")).sendKeys("9010100052000004 0221");
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/cc_ccv")).sendKeys("118");
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/signUpButton")).click();
-
+        sp.getCreditCardField().sendKeys("9010100052000004 0221");
+        sp.getCreditCardCvvField().sendKeys("118");
+        sp.getSignUpButton().click();
 
         //Assert if customer is created
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.usemenu.MenuAndroidApplication:id/imageButtonActionBarMenu")));
-        driver.findElement(By.id("com.usemenu.MenuAndroidApplication:id/imageButtonActionBarMenu")).click();
+        sp.getHamburgerMenu().click();
         Assert.assertTrue(sp.isMenageAccountOptionVisible(), "Customer account not created successfully!");
 
     }
 
 
-
     @AfterTest
     public void tearDown() {
+        sp.getManageAccountLink().click();
+        sp.getLogoutButton().click();
         super.tearDown();
     }
 }
