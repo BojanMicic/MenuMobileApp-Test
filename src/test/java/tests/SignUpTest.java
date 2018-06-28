@@ -1,10 +1,6 @@
 package tests;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -14,7 +10,6 @@ import org.testng.annotations.Test;
 import pages.SignUpPage;
 
 import java.net.MalformedURLException;
-import java.util.List;
 
 public class SignUpTest extends BaseTest {
 
@@ -34,10 +29,10 @@ public class SignUpTest extends BaseTest {
         sp.getHamburgerMenu().click();
         sp.getSignUpLink().click();
 
-        sp.getAllTextFields().get(0).sendKeys("Tester4");
-        sp.getAllTextFields().get(1).sendKeys("Testeric4");
-        sp.getAllTextFields().get(2).sendKeys("tester4@gmail.com");
-        sp.getAllTextFields().get(3).sendKeys("tTesteric2018");
+        sp.getAllTextFields().get(0).sendKeys("MenuTester");
+        sp.getAllTextFields().get(1).sendKeys("MenuTesteric");
+        sp.getAllTextFields().get(2).sendKeys("tester@menu.com");
+        sp.getAllTextFields().get(3).sendKeys("MenuTester2018");
         sp.getContinueButton().click();
 
         sp.getAllTextViews().get(3).click();
@@ -50,7 +45,6 @@ public class SignUpTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.usemenu.MenuAndroidApplication:id/imageButtonActionBarMenu")));
         sp.getHamburgerMenu().click();
         Assert.assertTrue(sp.isMenageAccountOptionVisible(), "Customer account not created successfully!");
-
     }
 
 
